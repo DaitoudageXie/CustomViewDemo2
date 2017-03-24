@@ -1,17 +1,29 @@
 package com.baochunhui.customviewdemo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     PieView mPieView;
+    Button btnLeafLoading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPieView= (PieView) findViewById(R.id.myPieView);
+        btnLeafLoading= (Button) findViewById(R.id.btn_toLeafLoading);
+        btnLeafLoading.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,LeafLoadingActivity.class);
+                startActivity(intent);
+            }
+        });
         initPieView();
     }
 
@@ -23,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         PieData pie4=new PieData(3521,"two");
         PieData pie5=new PieData(2541,"two");
         PieData pie6=new PieData(1254,"two");
-       mData.add(pie1);
+        mData.add(pie1);
         mData.add(pie2);
         mData.add(pie3);
         mData.add(pie4);
